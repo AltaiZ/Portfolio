@@ -1,63 +1,70 @@
-import React from 'react';
+"use client";
+import { Component, Contact2, Gamepad2, HomeIcon, User } from "lucide-react";
 import {
-  Component,
-  Contact2,
-  Gamepad2,
-  HomeIcon,
-  User,
-} from 'lucide-react';
-import { Dock, DockIcon, DockItem, DockLabel } from '@/components/motion-primitives/dock';
-import Link from 'next/link';
-
+  Dock,
+  DockIcon,
+  DockItem,
+  DockLabel,
+} from "@/components/motion-primitives/dock";
+import Link from "next/link";
 
 const data = [
   {
-    title: 'Home',
+    title: "Home",
     icon: (
-      <Link href={'/home'}><HomeIcon className='h-full w-full text-neutral-600 dark:text-neutral-300' /></Link>
+      <Link href={"/home"}>
+        <HomeIcon className="h-full w-full text-neutral-600 dark:text-neutral-300" />
+      </Link>
     ),
-    href: '#',
+    href: "#",
   },
   {
-    title: 'About',
+    title: "About",
     icon: (
-      <Link href={'/about'}><User className='h-full w-full text-neutral-600 dark:text-neutral-300' /></Link>
+      <Link href={"/about"}>
+        <User className="h-full w-full text-neutral-600 dark:text-neutral-300" />
+      </Link>
     ),
-    href: '#',
+    href: "#",
   },
   {
-    title: 'Skills',
+    title: "Skills",
     icon: (
-      <Link href={'/skills'}><Component className='h-full w-full text-neutral-600 dark:text-neutral-300' /></Link>
+      <Link href={"/skills"}>
+        <Component className="h-full w-full text-neutral-600 dark:text-neutral-300" />
+      </Link>
     ),
-    href: '#',
+    href: "#",
   },
   {
-    title: 'Contact',
+    title: "Contact",
     icon: (
-      <Link href={'/contact'}><Contact2 className='h-full w-full text-neutral-600 dark:text-neutral-300' /></Link>
+      <Link href={"/contact"}>
+        <Contact2 className="h-full w-full text-neutral-600 dark:text-neutral-300" />
+      </Link>
     ),
-    href: '#',
+    href: "#",
   },
   {
-    title: 'Have Fun',
+    title: "Have Fun",
     icon: (
-     <Link href={'/play'}> <Gamepad2 className='h-full w-full text-neutral-600 dark:text-neutral-300' /></Link>
+      <Link href={"/play"}>
+        {" "}
+        <Gamepad2 className="h-full w-full text-neutral-600 dark:text-neutral-300" />
+      </Link>
     ),
-    href: '#',
+    href: "#",
   },
- 
-  
 ];
 
 export default function Page() {
   return (
-    <div className='absolute bottom-20 left-1/2 max-w-full -translate-x-1/2 z-10'>
-      <Dock className='items-end pb-3'>
+    <div className="absolute bottom-20 left-1/2 max-w-full -translate-x-1/2 z-10">
+      <Dock className="items-end pb-3">
         {data.map((item, idx) => (
           <DockItem
             key={idx}
-            className='aspect-square rounded-full bg-gray-200 dark:bg-neutral-800'
+            className="aspect-square rounded-full bg-gray-200 dark:bg-neutral-800"
           >
             <DockLabel>{item.title}</DockLabel>
             <DockIcon>{item.icon}</DockIcon>
