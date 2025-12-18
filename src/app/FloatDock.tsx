@@ -28,10 +28,11 @@ const data = [
     href: "#",
   },
   {
-    title: "Skills",
+    title: "Have Fun",
     icon: (
-      <Link href={"/skills"}>
-        <Component className="h-full w-full text-neutral-600 dark:text-neutral-300" />
+      <Link href={"/play"}>
+        {" "}
+        <Gamepad2 className="h-full w-full text-neutral-600 dark:text-neutral-300" />
       </Link>
     ),
     href: "#",
@@ -41,16 +42,6 @@ const data = [
     icon: (
       <Link href={"/contact"}>
         <Contact2 className="h-full w-full text-neutral-600 dark:text-neutral-300" />
-      </Link>
-    ),
-    href: "#",
-  },
-  {
-    title: "Have Fun",
-    icon: (
-      <Link href={"/play"}>
-        {" "}
-        <Gamepad2 className="h-full w-full text-neutral-600 dark:text-neutral-300" />
       </Link>
     ),
     href: "#",
