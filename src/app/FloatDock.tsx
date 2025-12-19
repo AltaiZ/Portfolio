@@ -50,7 +50,7 @@ const data = [
 
 export default function Page() {
   return (
-    <div className="absolute bottom-20 left-1/2 max-w-full -translate-x-1/2 z-10">
+    <div className="absolute  bottom-5 left-1/2 max-w-full -translate-x-1/2 z-10">
       <Dock className="items-end pb-3">
         {data.map((item, idx) => (
           <DockItem
