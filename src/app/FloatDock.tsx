@@ -37,20 +37,11 @@ const data = [
     ),
     href: "#",
   },
-  {
-    title: "Contact",
-    icon: (
-      <Link href={"/contact"}>
-        <Contact2 className="h-full w-full text-neutral-600 dark:text-neutral-300" />
-      </Link>
-    ),
-    href: "#",
-  },
 ];
 
 export default function Page() {
   return (
-    <div className="absolute  bottom-5 left-1/2 max-w-full -translate-x-1/2 z-10">
+    <div className="absolute  bottom-40 left-1/2 max-w-full -translate-x-1/2 z-10">
       <Dock className="items-end pb-3">
         {data.map((item, idx) => (
           <DockItem

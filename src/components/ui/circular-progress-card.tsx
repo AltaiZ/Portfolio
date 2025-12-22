@@ -18,6 +18,7 @@ interface CircularProgressCardProps {
   currency?: string;
   progressColor?: string; // Prop to customize the progress bar color
   className?: string;
+  progressClassName?: string;
 }
 
 /**
@@ -32,39 +33,43 @@ export const CircularProgressCard = ({
   currency = "$",
   progressColor,
   className,
+  progressClassName,
 }: CircularProgressCardProps) => {
   const cardRef = React.useRef<HTMLDivElement>(null);
   // Animate the progress bar when it enters the viewport
   const isInView = useInView(cardRef, { once: true, margin: "-20%" });
 
   // Memoize calculations for performance optimization
-  const {
-    progressPercentage,
-    circumference,
-    strokeDashoffset,
-  } = React.useMemo(() => {
-    const radius = 80;
-    const circ = 2 * Math.PI * radius;
-    const progress = Math.min(Math.max((currentValue / goalValue) * 100, 0), 100);
-    const offset = circ * (1 - progress / 100);
-    return {
-      progressPercentage: Math.round(progress),
-      circumference: circ,
-      strokeDashoffset: offset,
-    };
-  }, [currentValue, goalValue]);
+  const { progressPercentage, circumference, strokeDashoffset } =
+    React.useMemo(() => {
+      const radius = 80;
+      const circ = 2 * Math.PI * radius;
+      const progress = Math.min(
+        Math.max((currentValue / goalValue) * 100, 0),
+        100
+      );
+      const offset = circ * (1 - progress / 100);
+      return {
+        progressPercentage: Math.round(progress),
+        circumference: circ,
+        strokeDashoffset: offset,
+      };
+    }, [currentValue, goalValue]);
 
   // Determine the stroke color, defaulting to the primary theme color
   const color = progressColor || "hsl(var(--primary))";
 
   return (
-    <Card ref={cardRef} className={cn("w-full max-w-sm text-center", className)}>
+    <Card
+      ref={cardRef}
+      className={cn("w-full max-w-sm text-center", className)}
+    >
       <CardHeader>
         <CardTitle>{title}</CardTitle>
         <CardDescription>{description}</CardDescription>
       </CardHeader>
       <CardContent>
-        <div className="relative mx-auto h-52 w-52">
+        <div className={`relative mx-auto h-40 w-40`}>
           {/* SVG container for the circular progress bar */}
           <svg
             width="100%"

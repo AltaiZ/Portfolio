@@ -1,84 +1,85 @@
-'use client'
-import React, { useState, useEffect } from 'react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Card } from '@/components/ui/card';
+"use client";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { useState, useEffect } from "react";
 
-export default function GuessNumberGame() {
-  const [targetNumber, setTargetNumber] = useState(0);
-  const [guess, setGuess] = useState("");
-  const [message, setMessage] = useState("1-100 хооронд тоо таагаарай");
-  const [attempts, setAttempts] = useState(0);
-  const [gameOver, setGameOver] = useState(false);
+export default function NumberGuessing() {
+  // 1. ТОГЛООМЫН САНАХ ОЙ (STATE)
+  const [targetNumber, setTargetNumber] = useState(0); // Компьютерын санасан тоо
+  const [guess, setGuess] = useState("");              // Таны бичиж буй тоо
+  const [message, setMessage] = useState("");          // Хариу мэдээлэл
+  const [attempts, setAttempts] = useState(0);         // Оролдлогын тоо
+  const [isGameOver, setIsGameOver] = useState(false); // Тоглоом дууссан эсэх
 
-  // Тоглоом эхлэхэд санамсаргүй тоо үүсгэх
-  useEffect(() => {
-    generateRandomNumber();
-  }, []);
-
-  const generateRandomNumber = () => {
+  // Шинэ тоглоом эхлүүлэх функц
+  const startNewGame = () => {
     setTargetNumber(Math.floor(Math.random() * 100) + 1);
     setGuess("");
-    setMessage("Шинэ тоглоом эхэллээ! 1-100 хооронд:");
+    setMessage("Just enter a number between 1 and 100!");
     setAttempts(0);
-    setGameOver(false);
+    setIsGameOver(false);
   };
 
-  const handleGuess = (e) => {
-    e.preventDefault();
-    const userGuess = parseInt(guess);
+  // Хуудас анх нээгдэхэд тоглоомыг эхлүүлэх
+  useEffect(() => {
+    startNewGame();
+  }, []);
 
-    if (isNaN(userGuess)) {
-      setMessage("Зөвхөн тоо оруулна уу!");
+  // Таах товч дарахад ажиллах логик
+  const handleGuess = () => {
+    const numGuess = parseInt(guess);
+
+    // Алдаа шалгах
+    if (isNaN(numGuess) || numGuess < 1 || numGuess > 100) {
+      setMessage("Just enter a number between 1 and 100!");
       return;
     }
 
-    setAttempts(prev => prev + 1);
+    setAttempts(attempts + 1);
 
-    if (userGuess === targetNumber) {
-      setMessage(`Баяр хүргэе! 🎉 Та ${attempts + 1} оролдлогоор таалаа.`);
-      setGameOver(true);
-    } else if (userGuess > targetNumber) {
-      setMessage("Хэтэрхий их байна! Бага тоо оруулна уу. 👇");
+    if (numGuess === targetNumber) {
+      setMessage(`Correct! ${attempts + 1} Attempts.`);
+      setIsGameOver(true);
+    } else if (numGuess < targetNumber) {
+      setMessage("There is a low!");
     } else {
-      setMessage("Хэтэрхий бага байна! Их тоо оруулна уу. 👆");
+      setMessage("There is a lot!");
     }
     setGuess("");
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-blue-500 to-purple-600 p-4 text-white">
-      <Card className="p-8 w-full max-w-md bg-white/10 backdrop-blur-md border-white/20 shadow-2xl text-center">
-        <h1 className="text-3xl font-bold mb-6">Тоо Таах Тоглоом</h1>
-        
-        <div className="text-lg font-medium mb-6 min-h-[60px] flex items-center justify-center">
-          {message}
-        </div>
+    <div className="flex justify-center items-center h-screen w-full">
+    <Card className="flex flex-col justify-center items-center gap-5 p-5">
+        <h1 className="text-2xl font-semibold">GUESS THE NUMBER</h1>
+      
+      <p>{message}</p>
 
-        {!gameOver ? (
-          <form onSubmit={handleGuess} className="flex flex-col gap-4">
-            <Input
-              type="number"
-              value={guess}
-              onChange={(e) => setGuess(e.target.value)}
-              placeholder="Тоогоо оруулна уу..."
-              className="bg-white text-black text-center text-xl h-14"
-              autoFocus
-            />
-            <Button type="submit" className="w-full h-12 text-lg bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-bold">
-              Таах
-            </Button>
-          </form>
-        ) : (
-          <Button onClick={generateRandomNumber} className="w-full h-12 text-lg bg-green-500 hover:bg-green-600 font-bold">
-            Дахин эхлэх
-          </Button>
-        )}
+      {!isGameOver ? (
+        <div className="flex gap-4">
+  <Input
+    type="number"
+    value={guess}
+    onChange={(e) => setGuess(e.target.value)}
+    onKeyDown={(e) => {
+      if (e.key === "Enter") {
+        handleGuess();
+      }
+    }}
+    placeholder="Write Numbers"
+  />
+  <Button onClick={handleGuess}>Guess</Button>
+</div>
+      ) : (
+        <Button onClick={startNewGame}>Play Again</Button>
+      )}
 
-        <div className="mt-6 text-sm opacity-80">
-          Оролдлогын тоо: {attempts}
-        </div>
-      </Card>
+      <div>
+        <p>Attempts: {attempts}</p>
+        {isGameOver && <p>The number is correct: {targetNumber}</p>}
+      </div>
+    </Card>
     </div>
   );
 }
