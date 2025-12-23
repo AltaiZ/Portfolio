@@ -69,7 +69,7 @@ export const CircularProgressCard = ({
         <CardDescription>{description}</CardDescription>
       </CardHeader>
       <CardContent>
-        <div className={`relative mx-auto h-40 w-40`}>
+        <div className={`relative mx-auto h-32 w-32`}>
           {/* SVG container for the circular progress bar */}
           <svg
             width="100%"
@@ -107,10 +107,10 @@ export const CircularProgressCard = ({
           </svg>
           {/* Text content centered inside the circle */}
           <div className="absolute inset-0 flex flex-col items-center justify-center">
-            <span className="text-4xl font-bold text-foreground">
+            <span className="text-2xl font-bold text-foreground">
               {progressPercentage}%
             </span>
-            <span className="text-sm text-muted-foreground">
+            <span className="text-xs text-muted-foreground">
               {currency}
               {currentValue.toLocaleString()} / {currency}
               {goalValue.toLocaleString()}

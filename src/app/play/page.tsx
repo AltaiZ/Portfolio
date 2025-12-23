@@ -50,8 +50,9 @@ export default function NumberGuessing() {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen w-full">
-    <Card className="flex flex-col justify-center items-center gap-5 p-5">
+    <div className="flex justify-center items-center h-screen w-full bg-[url(/76239.jpg)] bg-no-repeat bg-center bg-cover relative">
+    <div className="absolute w-full h-screen bg-black/50 flex justify-center items-center">
+        <Card className="flex flex-col justify-center items-center gap-5">
         <h1 className="text-2xl font-semibold">GUESS THE NUMBER</h1>
       
       <p>{message}</p>
@@ -80,6 +81,7 @@ export default function NumberGuessing() {
         {isGameOver && <p>The number is correct: {targetNumber}</p>}
       </div>
     </Card>
+    </div>
     </div>
   );
 }

@@ -1,5 +1,5 @@
 "use client";
-import { Component, Contact2, Gamepad2, HomeIcon, User } from "lucide-react";
+import { Atom, Component, Contact2, Gamepad2, HomeIcon, PhoneCall, User } from "lucide-react";
 import {
   Dock,
   DockIcon,
@@ -28,6 +28,15 @@ const data = [
     href: "#",
   },
   {
+    title: "Projects",
+    icon: (
+      <Link href={"/project"}>
+        <Atom className="h-full w-full text-neutral-600 dark:text-neutral-300" />
+      </Link>
+    ),
+    href: "#",
+  },
+  {
     title: "Have Fun",
     icon: (
       <Link href={"/play"}>
@@ -37,11 +46,21 @@ const data = [
     ),
     href: "#",
   },
+  {
+    title: "Contact",
+    icon: (
+      <Link href={"/contact"}>
+        {" "}
+        <PhoneCall className="h-full w-full text-neutral-600 dark:text-neutral-300" />
+      </Link>
+    ),
+    href: "#",
+  },
 ];
 
 export default function Page() {
   return (
-    <div className="absolute  bottom-40 left-1/2 max-w-full -translate-x-1/2 z-10">
+    <div className="absolute bottom-10 md:bottom-10 lg:bottom-10 left-1/2 max-w-full -translate-x-1/2 z-10">
       <Dock className="items-end pb-3">
         {data.map((item, idx) => (
           <DockItem

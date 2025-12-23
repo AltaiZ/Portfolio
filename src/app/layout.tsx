@@ -34,7 +34,6 @@ export default function RootLayout({
       >
         <FloatDock />
         {children}
-        <Footer/>
       </body>
     </html>
   );
