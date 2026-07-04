@@ -50,6 +50,19 @@ body {
   font-family: monospace, Helvetica, sans-serif;
 }
 
+html {
+  overflow-x: hidden;
+}
+
+body {
+  min-height: 100dvh;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+}
+
 :root {
   --radius: 0.625rem;
   --background: oklch(49.97% 0.00006 271.152);

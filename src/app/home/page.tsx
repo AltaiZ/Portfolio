@@ -1,8 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { TextLoop } from "@/components/motion-primitives/text-loop";
-import Image from "next/image";
-import { Fullscreen } from "lucide-react";
 const Page = () => {
   const [trigger, setTrigger] = useState(true);
 
@@ -14,11 +12,11 @@ const Page = () => {
   }, []);
 
   return (
-    <div className="flex justify-center items-center bg-[url(/76239.jpg)] bg-no-repeat bg-center bg-cover relative">
-      <div className="absolute w-full h-screen bg-black/50" />
-      <div className="flex relative justify-center h-screen bg-[url(/portrait23.png)] bg-cover bg-no-repeat bg-center w-200">
+    <div className="relative flex h-dvh items-center justify-center overflow-hidden bg-[url(/76239.jpg)] bg-cover bg-center bg-no-repeat pb-24 sm:pb-28">
+      <div className="absolute inset-0 bg-black/50" />
+      <div className="relative flex h-full w-full max-w-[50rem] justify-center bg-[url(/portrait23.png)] bg-contain bg-center bg-no-repeat sm:bg-cover">
         <TextLoop
-          className="font-mono absolute top-35 text-2xl md:text-4xl lg:text-6xl font-bold text-wrap px-6 text-center z-99 text-card "
+          className="absolute top-[14dvh] z-10 px-4 text-center font-mono text-2xl font-bold text-card sm:top-[16dvh] md:text-4xl lg:text-6xl"
           trigger={trigger}
         >
           <span>Hello?</span>

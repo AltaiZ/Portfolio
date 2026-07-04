@@ -3,8 +3,8 @@ import React from "react";
 
 export const Component = () => {
   return (
-    <section className="h-screen flex flex-col justify-center items-center bg-[url(/76239.jpg)] bg-no-repeat bg-center bg-cover relative">
-     <div className="absolute w-full h-screen bg-black/50 flex flex-col justify-center items-center" >
+    <section className="relative flex min-h-dvh flex-col items-center justify-center bg-[url(/76239.jpg)] bg-cover bg-center bg-no-repeat">
+     <div className="flex min-h-dvh w-full flex-col items-center justify-center bg-black/50 px-4 pb-28 text-center sm:pb-32" >
        <FlipLink href="+976 96993933">Phone Call</FlipLink>
       <FlipLink href="Munkh_altai@yahoo.com">Mail</FlipLink>
       <FlipLink href="https://www.facebook.com/munkhaltai.sukhbaatar">Facebook</FlipLink>
@@ -18,7 +18,7 @@ const FlipLink = ({ children, href }: { children: string; href: string }) => {
   return (
     <a
       href={href}
-      className="group text-card relative block overflow-hidden whitespace-nowrap text-4xl font-black uppercase sm:text-7xl md:text-8xl lg:text-9xl"
+      className="group relative block max-w-full overflow-hidden whitespace-nowrap text-[clamp(2rem,13vw,8rem)] font-black uppercase text-card"
       style={{
         lineHeight: 0.75,
       }}

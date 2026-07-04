@@ -14,13 +14,13 @@ import Link from "next/link";
 const page = () => {
   return (
     <TooltipProvider>
-      <div className="min-h-screen w-full flex justify-center bg-[url(/76239.jpg)] bg-no-repeat bg-center bg-cover relative ">
-        <div className="absolute w-full h-screen bg-black/50 flex justify-center items-center overflow-y-auto p-4">
-          <Card className="w-fit h-fit my-10 p-5 max-sm:scale-[0.85] max-sm:p-3 sm:scale-100 transition-transform duration-300">
+      <div className="relative flex min-h-dvh w-full justify-center bg-[url(/76239.jpg)] bg-cover bg-center bg-no-repeat">
+        <div className="flex min-h-dvh w-full justify-center overflow-y-auto bg-black/50 px-3 pb-28 pt-6 sm:px-4 sm:pb-32 sm:pt-10">
+          <Card className="my-auto h-fit w-full max-w-xl p-4 sm:p-5">
             <div className="flex flex-col gap-5">
               <div className="flex flex-col justify-center items-center border-b pb-4">
                 <img
-                  className="rounded-full w-48 h-48 max-sm:w-[35vw] max-sm:h-[35vw] object-cover"
+                  className="h-36 w-36 rounded-full object-cover sm:h-48 sm:w-48"
                   src={"portrait2.jpg"}
                   alt="Portrait"
                 />
@@ -37,7 +37,7 @@ const page = () => {
                 <span>37</span>
               </div>
 
-              <div className="flex gap-5">
+              <div className="flex flex-col gap-4 sm:flex-row sm:gap-5">
                 <Tooltip>
                   <TooltipTrigger>
                     <CircularProgressCard
@@ -52,7 +52,7 @@ const page = () => {
                   </TooltipTrigger>
                   <TooltipContent
                     side="top"
-                    className="p-0 border-none bg-transparent shadow-none"
+                    className="max-w-[calc(100vw-2rem)] overflow-x-auto border-none bg-transparent p-0 shadow-none"
                   >
                     <Card className="w-fit p-6 bg-background border shadow-xl">
                       <div className="flex flex-col items-center gap-6">
@@ -214,7 +214,7 @@ const page = () => {
                   </TooltipTrigger>
                   <TooltipContent
                     side="top"
-                    className="p-0 border-none bg-transparent shadow-none"
+                    className="max-w-[calc(100vw-2rem)] overflow-x-auto border-none bg-transparent p-0 shadow-none"
                   >
                     <Card className="w-fit p-6 bg-background border shadow-xl">
                       <div className="flex flex-col items-center gap-6">

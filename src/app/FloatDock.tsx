@@ -60,8 +60,13 @@ const data = [
 
 export default function Page() {
   return (
-    <div className="absolute bottom-10 md:bottom-10 lg:bottom-10 left-1/2 max-w-full -translate-x-1/2 z-10">
-      <Dock className="items-end pb-3">
+    <div className="fixed bottom-4 left-1/2 z-50 w-[calc(100%-1rem)] max-w-md -translate-x-1/2 sm:bottom-6 md:bottom-8">
+      <Dock
+        className="items-end gap-2 px-3 pb-2 sm:gap-4 sm:px-4 sm:pb-3"
+        magnification={68}
+        distance={120}
+        panelHeight={56}
+      >
         {data.map((item, idx) => (
           <DockItem
             key={idx}

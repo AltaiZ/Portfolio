@@ -50,15 +50,15 @@ export default function NumberGuessing() {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen w-full bg-[url(/76239.jpg)] bg-no-repeat bg-center bg-cover relative">
-    <div className="absolute w-full h-screen bg-black/50 flex justify-center items-center">
-        <Card className="flex flex-col justify-center items-center gap-5">
-        <h1 className="text-2xl font-semibold">GUESS THE NUMBER</h1>
+    <div className="relative flex min-h-dvh w-full items-center justify-center bg-[url(/76239.jpg)] bg-cover bg-center bg-no-repeat">
+    <div className="flex min-h-dvh w-full items-center justify-center bg-black/50 px-4 pb-28 pt-8 sm:pb-32">
+        <Card className="flex w-full max-w-md flex-col items-center justify-center gap-5 p-5 text-center sm:p-6">
+        <h1 className="text-xl font-semibold sm:text-2xl">GUESS THE NUMBER</h1>
       
       <p>{message}</p>
 
       {!isGameOver ? (
-        <div className="flex gap-4">
+        <div className="flex w-full flex-col gap-3 sm:flex-row sm:gap-4">
   <Input
     type="number"
     value={guess}
@@ -70,7 +70,7 @@ export default function NumberGuessing() {
     }}
     placeholder="Write Numbers"
   />
-  <Button onClick={handleGuess}>Guess</Button>
+  <Button className="shrink-0" onClick={handleGuess}>Guess</Button>
 </div>
       ) : (
         <Button onClick={startNewGame}>Play Again</Button>
