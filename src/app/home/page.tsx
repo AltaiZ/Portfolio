@@ -12,11 +12,16 @@ const Page = () => {
   }, []);
 
   return (
-    <div className="relative flex h-dvh items-center justify-center overflow-hidden bg-[url(/76239.jpg)] bg-cover bg-center bg-no-repeat px-4 pb-24 pt-8 sm:pb-28 sm:pt-10">
+    <div className="relative flex h-dvh items-center justify-center overflow-hidden bg-[url(/76239.jpg)] bg-cover bg-center bg-no-repeat">
       <div className="absolute inset-0 bg-black/50" />
-      <div className="relative flex h-full w-full max-w-[46rem] justify-center bg-[url(/portrait23.png)] bg-contain bg-center bg-no-repeat">
+      <div className="relative h-full w-full max-w-md overflow-hidden">
+        <img
+          src="/portrait23.png"
+          alt=""
+          className="h-full w-full object-cover object-center"
+        />
         <TextLoop
-          className="absolute top-[13%] z-10 px-4 text-center font-mono text-2xl font-bold text-card sm:top-[14%] md:text-4xl lg:text-6xl"
+          className="absolute left-1/2 top-[16%] z-10 w-full -translate-x-1/2 px-4 text-center font-mono text-2xl font-bold text-card sm:top-[14%] md:text-4xl lg:text-6xl"
           trigger={trigger}
         >
           <span>Hello?</span>
